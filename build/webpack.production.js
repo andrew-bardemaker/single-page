@@ -12,7 +12,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
  * Internal dependencies.
  * 
  */
-const { srcPath, tests, assetFilename, srcFonts } = require('./lib/utils');
+const { srcPath, tests } = require('./lib/utils');
 const postcss = require('./postcss');
 
 /**
@@ -43,7 +43,7 @@ const plugins = [
     filename: 'index.html'
   }),
   new MiniCssExtractPlugin({
-    filename: 'styles/styles.css',
+    filename: 'styles.css'
   })
 ];
 
@@ -105,22 +105,15 @@ module.exports = {
           {
             loader: MiniCssExtractPlugin.loader,
             options: {
-              publicPath: '../',
+              publicPath: srcPath(),
             }
           },
           'css-loader',
           {
-            loader: 'postcss-loader',
+            loader: 'postcss-loader?url=false',
             options: postcss
           },
-          {
-            loader: 'sass-loader',
-            options: {
-              sassOptions: {
-                outputStyle: 'compact'
-              },
-            },
-          },
+          'sass-loader'
         ]
       },
 
@@ -129,21 +122,31 @@ module.exports = {
        */
       {
         test: tests.images,
-        type: 'asset/resource',
-        generator: {
-          filename: 'images/[name][ext]'
-        },
+        use: [
+          {
+            loader: 'file-loader', 
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'images',
+            },
+          },
+        ],
       },
 
       /**
        * Handle fonts.
        */
-      {
+       {
         test: tests.fonts,
-        type: 'asset/resource',
-        generator: {
-          filename: 'fonts/[name][ext]'
-        },
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'fonts',
+            },
+          },
+        ],
       },
     ]
   },
@@ -160,9 +163,9 @@ module.exports = {
    * Setup optimizations.
    * 
    */
-  // optimization: {
-  //   minimize: true
-  // },
+  optimization: {
+    minimize: true
+  },
 
   /**
    * 

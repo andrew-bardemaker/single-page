@@ -1,0 +1,126 @@
+/**
+ *
+ * Hero
+ *
+ */
+ 
+@include desktop-md-down() {
+  .hero {  
+    .swiper {
+      @include background-support();
+      @include swiper-default();
+      margin: 6% 5% 0% -5%;
+      
+      &__prev {
+        @include arrow-outline-base(#fff,35px,5px);
+        @include arrow-rotate-left();
+        @include arrow-default();
+        margin-left: 25px;
+      }
+      
+      &__next {
+        @include arrow-outline-base(#fff,35px,5px);
+        @include arrow-rotate-right();
+        @include arrow-default();
+        margin-right: 20px;
+      }
+    }
+  }
+}
+
+@include desktop-down() {
+  .hero {  
+    .swiper {
+      @include background-support();
+      @include swiper-default();
+      margin: 5% 10% 0% 5%;
+
+        
+      &__prev {
+        @include arrow-outline-base(#fff,35px,5px);
+        @include arrow-rotate-left();
+        @include arrow-default();
+        margin-left: 23px;
+      }
+        
+      &__next {
+        @include arrow-outline-base(#fff,35px,5px);
+        @include arrow-rotate-right();
+        @include arrow-default();
+        margin-right: 23px;
+      }
+    }
+  } 
+}
+
+@include tablet-down() {
+  .hero {  
+    .swiper {
+      @include background-support();
+      @include swiper-default();
+      margin: 5% 1% 0% -1%;
+    
+      &__prev {
+        @include arrow-outline-base(#fff,35px,5px);
+        @include arrow-rotate-left();
+        @include arrow-default();
+        margin-left: 25px;
+      }
+        
+      &__next {
+        @include arrow-outline-base(#fff,35px,5px);
+        @include arrow-rotate-right();
+        @include arrow-default();
+        margin-right: 20px;
+      }
+    };
+  }
+}
+
+@include mobile-down() {
+  .hero {  
+    .swiper {
+      @include background-support();
+      @include swiper-default();
+    
+        
+      &__prev {
+        @include arrow-outline-base(#fff,35px,5px);
+        @include arrow-rotate-left();
+        @include arrow-default();
+        margin-left: 22px;
+      }
+        
+      &__next {
+        @include arrow-outline-base(#fff,35px,5px);
+        @include arrow-rotate-right();
+        @include arrow-default();
+        margin-right: 22px;
+      }
+    }
+  }
+}
+
+@include mobile-small-down() {
+  .hero {  
+    .swiper {
+      @include background-support();
+      @include swiper-default();
+      width: 100%;
+
+      &__prev {
+        @include arrow-outline-base(#fff,35px,5px);
+        @include arrow-rotate-left();
+        @include arrow-default();
+        margin-left: 22px;
+      }
+        
+      &__next {
+        @include arrow-outline-base(#fff,35px,5px);
+        @include arrow-rotate-right();
+        @include arrow-default();
+        margin-right: 22px;
+      }
+    }
+  }
+}

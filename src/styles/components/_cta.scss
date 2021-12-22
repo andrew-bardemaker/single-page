@@ -1,0 +1,12 @@
+/**
+ *
+ * CTA
+ *
+ */
+ 
+.cta {
+  @include gradient(left);
+  display: flex;
+  height: auto;
+  width: 100%;
+}
